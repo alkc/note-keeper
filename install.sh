@@ -7,12 +7,12 @@ install_dir="$HOME/.local/note-keeper"
 
 mkdir -p "$install_dir"
 
-curl -o "$install_dir/note" https://raw.githubusercontent.com/alkc/note-keeper/master/note
+curl -o "$install_dir/note" https://raw.githubusercontent.com/alkc/note-keeper/thesis-notes/note
 chmod +x "$install_path" 
 
 ln -s "$install_dir/note" "$executable_install_path"
 
-curl -o "$install_dir/settings.conf" https://raw.githubusercontent.com/alkc/note-keeper/master/note.settings
+curl -o "$install_dir/settings.conf" https://raw.githubusercontent.com/alkc/note-keeper/thesis-notes/settings.conf
 nano "$install_dir/settings.conf"
 
 echo "Note Keeper installed ($install_path)."
