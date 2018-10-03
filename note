@@ -5,7 +5,7 @@ source "$settings_file"
 
 create_note () {
     if [ ! -f "$note_path" ]; then
-        mkdir -p "~/$THESIS_LOG_DIR/$year/$month/"
+        mkdir -p "$THESIS_LOG_DIR/$year/$month/"
         touch "$note_path"
         printf "$day-$month-$year\n---\n\n" > "$note_path"
         printf "Created new note: $note_path\n"
