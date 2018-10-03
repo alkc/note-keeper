@@ -1,10 +1,13 @@
 #!/bin/bash
 
+settings_file="$HOME/.local/note-keeper/settings.conf"
+source "$settings_file"
+
 create_note () {
-    if [ ! -f $note_path ]; then
-        mkdir -p ~/notes/$year/$month/
-        touch $note_path
-        printf "$day-$month-$year\n---\n\n" > $note_path
+    if [ ! -f "$note_path" ]; then
+        mkdir -p "~/$THESIS_LOG_DIR/$year/$month/"
+        touch "$note_path"
+        printf "$day-$month-$year\n---\n\n" > "$note_path"
         printf "Created new note: $note_path\n"
     else
         printf "Note \"$note_path\" already exists.\n"
@@ -13,17 +16,17 @@ create_note () {
 
 print_info () {
     printf "Note preview:\n====================\n\n"
-    head -n 8 $note_path
+    head -n 8 "$note_path"
     printf "\n====================\n"
     printf "Note Stats:\n"
-    stat $note_path
+    stat "$note_path"
     printf "\n====================\n"
     printf "File Information:\n"
-    ls -lah $note_path
+    ls -lah "$note_path"
 }
 
 print_help () {
-    printf "note - Note Keeper 0.3 (02 Aug 2018)
+    printf "note - Note Keeper 0.3 (02 Aug 2018), modified (03 Oct 2018) for keeping a thesis log
 
 Usage: note [arguments]
 
@@ -36,24 +39,24 @@ Arguments:
 }
 
 open_note () {
-    if [[ $EDITOR = *"vim"* ]] || [[ $EDITOR = *"nvim"* ]]; then
+    if [[ "$EDITOR" = *"vim"* ]] || [[ "$EDITOR" = *"nvim"* ]]; then
         # Open Vim or Neovim in insert mode.
-        $EDITOR "+normal G$" +startinsert $note_path
-    elif [[ $EDITOR = *"emacs"* ]]; then
+        "$EDITOR" "+normal G$" +startinsert "$note_path"
+    elif [[ "$EDITOR" = *"emacs"* ]]; then
         # Open Emacs with cursor at EOF.
-        emacs -nw $note_path --eval "(goto-char (point-max))"
-    elif [[ $EDITOR = "" ]]; then
+        emacs -nw "$note_path" --eval "(goto-char (point-max))"
+    elif [[ "$EDITOR" = "" ]]; then
         # If no default editor, use Vim and open in insert mode.
-        vim "+normal G$" +startinsert $note_path
+        vim "+normal G$" +startinsert "$note_path"
     else
-        $EDITOR $note_path
+        "$EDITOR" "$note_path"
     fi
 }
 
 year=`date +'%Y'`
 month=`date +'%m'`
 day=`date +'%d'`
-note_path=~/notes/$year/$month/$day.md
+note_path="$THESIS_LOG_DIR/$year/$month/$day.md"
 
 if (( $# > 0 )); then
     while [[ $# -gt 0 ]]
@@ -67,7 +70,7 @@ if (( $# > 0 )); then
             exit 0
             ;;
             -p|--print)
-            cat $note_path
+            cat "$note_path"
             shift
             ;;
             -c|--create)
