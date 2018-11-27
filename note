@@ -1,7 +1,6 @@
 #!/bin/bash
 
-settings_file="$HOME/.local/note-keeper/settings.conf"
-source "$settings_file"
+
 
 create_note () {
     if [ ! -f "$note_path" ]; then
@@ -26,7 +25,7 @@ print_info () {
 }
 
 print_help () {
-    printf "note - Note Keeper 0.3 (02 Aug 2018), modified (03 Oct 2018) for keeping a thesis log
+    printf "note - Note Keeper 0.3 (02 Aug 2018), modified (26 Nov 2018) for keeping a thesis log
 
 Usage: note [arguments]
 
