@@ -1,6 +1,8 @@
 # note-keeper
 A tiny script for taking and organizing simple text notes.
 
+**This version has been modified to use the env variable $THESIS_LOG_DIR to define a custom dir for the notes**
+
 ![gif](https://i.imgur.com/z70PRhk.gif)
 
 * Write a TODO list.
@@ -18,7 +20,7 @@ Note Keeper is a tiny shell script.
 
 ## EZ Install
 Run this command in your terminal:  
-`curl https://raw.githubusercontent.com/dcchambers/note-keeper/master/install.sh | bash`  
+`curl https://raw.githubusercontent.com/alkc/note-keeper/thesis-notes/install.sh | bash`  
 
 :bulb: Get a `permission denied` error? You might need to run the script with `sudo`. Try this:  
 `curl https://raw.githubusercontent.com/dcchambers/note-keeper/master/install.sh | sudo bash`  
